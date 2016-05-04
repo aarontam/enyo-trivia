@@ -1,57 +1,10 @@
-import fetch from 'isomorphic-fetch'
+//TODO there has to be a better way to import/export this stuff
 
-const apiBaseUrl = 'http://jservice.io/api'
+import { categoryClues as catClue, randomCategories as catRand } from './Categories';
+import { randomClue as clueRand } from './Clues';
+import { requestData as request } from './Data';
 
-export const REQUEST_DATA = 'REQUEST_DATA'
-export const RECEIVE_CLUES = 'RECEIVE_CLUES'
-export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES'
-
-export function randomClue() {
-	return dispatch => {
-		dispatch(requestData())
-		return fetch(`${apiBaseUrl}/random`)
-			.then(response => response.json())
-			.then(json => dispatch(receiveClues(json)))
-	}
-}
-
-export function randomCategories(count = 5) {
-	const offset = Math.random()*1000
-	return dispatch => {
-		dispatch(requestData())
-		return fetch(`${apiBaseUrl}/categories?count=${count}&offset=${offset}`)
-			.then(response => response.json())
-			.then(json => dispatch(receiveCategories(json)))
-	}
-}
-
-export function categoryClues(categoryId) {
-	return dispatch => {
-		dispatch(requestData())
-		return fetch(`${apiBaseUrl}/clues/?category=${categoryId}`)
-			.then(response => response.json())
-			.then(json => dispatch(receiveClues(json)))
-	}
-}
-
-function requestData() {
-	return {
-		type: REQUEST_DATA
-	}
-}
-
-function receiveCategories(json) {
-	return {
-		type: RECEIVE_CATEGORIES,
-		categories: json,
-		receivedAt: Date.now()
-	}
-}
-
-function receiveClues(json) {
-	return {
-		type: RECEIVE_CLUES,
-		clues: json,
-		receivedAt: Date.now()
-	}
-}
+export const categoryClues = catClue;
+export const randomCategories = catRand;
+export const randomClue = clueRand;
+export const requestData = request;

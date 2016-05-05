@@ -1,10 +1,10 @@
-import { RECEIVE_CLUE } from '../actions/Clues';
+import { RECEIVE_CLUES } from '../actions/Clues';
 
 const initialState = [];
 
 export default function clues(state = initialState, action) {
 	switch (action.type) {
-		case RECEIVE_CLUE:
+		case RECEIVE_CLUES:
 			// return Object.assign({}, state, {
 			// 	isFetching: false,
 			// 	didInvalidate: false,

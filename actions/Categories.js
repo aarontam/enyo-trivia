@@ -2,9 +2,9 @@ import fetch from 'isomorphic-fetch';
 
 import { apiBaseUrl } from './Data';
 import { requestData } from './index';
+import { RECEIVE_CLUES } from './Clues';
 
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
-export const RECEIVE_CLUES = 'RECEIVE_CLUES';
 
 export function randomCategories(count = 5) {
 	const offset = Math.random()*1000;
@@ -21,7 +21,7 @@ export function categoryClues(categoryId) {
 		dispatch(requestData());
 		return fetch(`${apiBaseUrl}/clues/?category=${categoryId}`)
 			.then(response => response.json())
-			.then(json => dispatch(receiveCategoryClues(json)));
+			.then(json => dispatch({type: RECEIVE_CLUES, payload: {clues: json}}));
 	};
 }
 
@@ -31,17 +31,6 @@ function receiveCategories(json) {
 		// use FSA (Flux Standard Action) definition?
 		payload: {
 			categories: json
-		},
-		receivedAt: Date.now()
-	};
-}
-
-function receiveCategoryClues(json) {
-	return {
-		type: RECEIVE_CLUES,
-		// use FSA (Flux Standard Action) definition?
-		payload: {
-			clues: json
 		},
 		receivedAt: Date.now()
 	};

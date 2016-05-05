@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import {
-	REQUEST_DATA, RECEIVE_CLUE, RECEIVE_CLUES, RECEIVE_CATEGORIES
+	REQUEST_DATA, RECEIVE_CLUES, RECEIVE_CATEGORIES
 } from '../actions'
 
 function data(state = {
@@ -12,13 +12,6 @@ function data(state = {
 			return Object.assign({}, state, {
 				isFetching: true,
 				didInvalidate: false
-			})
-		case RECEIVE_CLUE:
-			return Object.assign({}, state, {
-				isFetching: false,
-				didInvalidate: false,
-				clues: action.clues,
-				lastUpdated: action.receivedAt
 			})
 		case RECEIVE_CLUES:
 			return Object.assign({}, state, {

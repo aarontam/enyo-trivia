@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
 import { apiBaseUrl } from './Data';
-import { requestData } from './index';
+import { requestData, receiveData } from './index';
 
 export const RECEIVE_CLUES = 'RECEIVE_CLUES';
 
@@ -10,7 +10,8 @@ export function randomClue() {
 		dispatch(requestData());
 		return fetch(`${apiBaseUrl}/random`)
 			.then(response => response.json())
-			.then(json => dispatch(receiveClues(json)));
+			.then(json => dispatch(receiveClues(json)))
+			.then(dispatch(receiveData({receivedAt: Date.now()})));
 	};
 }
 
@@ -21,7 +22,9 @@ export function receiveClues(json) {
 		payload: {
 			clues: json
 		},
-		receivedAt: Date.now()
+		meta: {
+			receivedAt: Date.now()
+		}
 	};
 }
 

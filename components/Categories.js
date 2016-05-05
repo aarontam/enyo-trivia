@@ -5,7 +5,6 @@ import { categoryClues } from '../actions';
 export default class Categories extends Component {
 	handleClick(categoryId) {
 		const { dispatch } = this.props;
-		console.log("HANDLING CLICK", this.props);
 
 		dispatch(categoryClues(categoryId));
 	}
@@ -14,7 +13,6 @@ export default class Categories extends Component {
 	// event handler?
 	render() {
 		const categories = this.props.categories;
-		console.log("RENDER CATEGORIES", this);
 		return (
 			<div>
 				{categories.map((category, i) =>

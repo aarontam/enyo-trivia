@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
 import { apiBaseUrl } from './Data';
-import { requestData } from './index';
+import { requestData, receiveData } from './index';
 import { RECEIVE_CLUES } from './Clues';
 
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
@@ -12,7 +12,8 @@ export function randomCategories(count = 5) {
 		dispatch(requestData());
 		return fetch(`${apiBaseUrl}/categories?count=${count}&offset=${offset}`)
 			.then(response => response.json())
-			.then(json => dispatch(receiveCategories(json)));
+			.then(json => dispatch(receiveCategories(json)))
+			.then(dispatch(receiveData({receivedAt: Date.now()})));
 	};
 }
 
@@ -21,7 +22,8 @@ export function categoryClues(categoryId) {
 		dispatch(requestData());
 		return fetch(`${apiBaseUrl}/clues/?category=${categoryId}`)
 			.then(response => response.json())
-			.then(json => dispatch({type: RECEIVE_CLUES, payload: {clues: json}}));
+			.then(json => dispatch({type: RECEIVE_CLUES, payload: {clues: json}}))
+			.then(dispatch(receiveData({receivedAt: Date.now()})));
 	};
 }
 
@@ -32,6 +34,8 @@ function receiveCategories(json) {
 		payload: {
 			categories: json
 		},
-		receivedAt: Date.now()
+		meta: {
+			receivedAt: Date.now()
+		}
 	};
 }

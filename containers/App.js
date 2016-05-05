@@ -35,18 +35,18 @@ App.propTypes = {
 };
 
 function mapStateToProps(state) {
-	console.log("MAPPING STATE TO PROPS", state);
 	return {
 		clues: state.clues,
-		categories: state.categories
-	}
+		categories: state.categories,
+		data: state.data
+	};
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
 		actions: bindActionCreators(actionCreators, dispatch),
 		dispatch: dispatch //TODO only really need this to satisfy propTypes
-	}
+	};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

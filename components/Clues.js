@@ -3,7 +3,6 @@ import React, { PropTypes, Component } from 'react'
 export default class Clues extends Component {
 	render() {
 		const clues = this.props.clues
-		console.log("RENDER CLUES", this);
 		return (
 			<div>
 				{clues.map((clue, i) =>

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import * as actionCreators from '../actions/index';
 import Categories from '../components/Categories';
-import Clues from '../components/Clues';
 
 import Board from './Board'
 
@@ -23,7 +22,6 @@ class App extends Component {
 		return (
 			<div className='board'>
 				<Categories />
-				<Clues />
 			</div>
 		)
 	}

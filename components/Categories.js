@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { categoryClues } from '../actions';
+import Clues from './Clues';
 
 export default class Categories extends Component {
 	handleClick(categoryId) {
@@ -16,7 +17,10 @@ export default class Categories extends Component {
 		return (
 			<div>
 				{categories.map((category, i) =>
-					<button key={i} onClick={this.handleClick.bind(this, category.id)}>{category.title}</button>
+					<div>
+						<button key={i} onClick={this.handleClick.bind(this, category.id)}>{category.title}</button>
+						<Clues clues={category.clues || []} />
+					</div>
 				)}
 			</div>
 		)

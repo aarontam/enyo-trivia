@@ -4,6 +4,7 @@ import { apiBaseUrl } from './Data';
 import { requestData, receiveData } from './index';
 
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
+export const UPDATE_CATEGORY_CLUE = 'UPDATE_CATEGORY_CLUE';
 export const UPDATE_CATEGORY_CLUES = 'UPDATE_CATEGORY_CLUES';
 
 export function randomCategories(count = 6) {
@@ -34,4 +35,26 @@ function receiveCategories(json) {
         });
         dispatch(receiveData({receivedAt: Date.now()}));
     };
+}
+
+export function updateCategoryClue(clue, data) {
+	return {
+		type: UPDATE_CATEGORY_CLUE,
+		payload: {
+			clue,
+			data
+		},
+		receivedAt: Date.now()
+	}
+}
+
+export function updateCategoryClues(clues, categoryId) {
+	return {
+		type: UPDATE_CATEGORY_CLUES,
+		payload: {
+			clues: clues,
+			categoryId: categoryId
+		},
+		receivedAt: Date.now()
+	}
 }

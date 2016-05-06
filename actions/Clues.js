@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
 import { apiBaseUrl } from './Data';
-import { requestData } from './index';
+import { requestData, receiveData } from './index';
 
 export const RECEIVE_CLUES = 'RECEIVE_CLUES';
 export const UPDATE_CLUES = 'UPDATE_CLUES';
@@ -16,13 +16,9 @@ export function randomClue() {
 }
 
 export function receiveClues(json) {
-	return {
-		type: RECEIVE_CLUES,
-		// use FSA (Flux Standard Action) definition?
-		payload: {
-			clues: json
-		},
-		receivedAt: Date.now()
+	return dispatch => {
+		dispatch({type: RECEIVE_CLUES, payload: {clues: json}});
+		dispatch(receiveData({receivedAt: Date.now()}));
 	};
 }
 
@@ -35,4 +31,3 @@ export function updateClues(clues) {
 		receivedAt: Date.now()
 	};
 }
-

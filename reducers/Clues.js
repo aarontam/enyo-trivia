@@ -6,13 +6,7 @@ export default function clues(state = initialState, action) {
 	switch (action.type) {
 		case RECEIVE_CLUES:
 		case UPDATE_CLUES:
-			// return Object.assign({}, state, {
-			// 	isFetching: false,
-			// 	didInvalidate: false,
-			// 	clues: action.clues,
-			// 	lastUpdated: action.receivedAt
-			// });
-			return action.payload.clues; //TODO should move other state pieces (lastUpdated, isFetching, etc.) to other actions/state branches?
+			return [...action.payload.clues, ...state];
 		default:
 			return state || [];
 	}

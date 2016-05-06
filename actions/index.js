@@ -1,3 +1,3 @@
 export {categoryClues, randomCategories} from './Categories';
 export {randomClue, updateClues} from './Clues';
-export {requestData} from './Data';
+export {requestData, receiveData} from './Data';

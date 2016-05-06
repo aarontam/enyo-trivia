@@ -6,7 +6,7 @@ import { requestData, receiveData } from './index';
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 export const UPDATE_CATEGORY_CLUES = 'UPDATE_CATEGORY_CLUES';
 
-export function randomCategories(count = 5) {
+export function randomCategories(count = 6) {
 	const offset = Math.random()*1000;
 	return dispatch => {
 		dispatch(requestData());

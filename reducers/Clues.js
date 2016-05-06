@@ -1,4 +1,4 @@
-import { RECEIVE_CLUES } from '../actions/Clues';
+import { RECEIVE_CLUES, UPDATE_CLUES } from '../actions/Clues';
 
 const initialState = [];
 

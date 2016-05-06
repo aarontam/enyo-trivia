@@ -1,5 +1,5 @@
 import React from 'react';
-import ClueBoxContainer from '../containers/ClueBoxContainer';
+import ClueBoxContainer from './clueBox/ClueBoxContainer';
 
 const CategoryClueList = ({category}) =>
 	<div className="category-clue-list">

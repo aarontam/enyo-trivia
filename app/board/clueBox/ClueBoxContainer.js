@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { updateCategoryClue } from '../actions';
-import ClueBox from '../components/ClueBox';
+import { updateCategoryClue } from '../../../actions';
+import ClueBox from './ClueBox';
 
 export default class ClueBoxContainer extends Component {
 	handleClick(clue) {

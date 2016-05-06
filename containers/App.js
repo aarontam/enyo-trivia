@@ -6,16 +6,18 @@ import * as actionCreators from '../actions/index';
 import Categories from '../components/Categories';
 import Clues from '../components/Clues';
 
+import Board from './Board'
+
 class App extends Component {
 
 	componentDidMount() {
 		const { actions } = this.props;
-		actions.randomClue();
-		actions.randomCategories();
+		// actions.randomClue();
+		// actions.randomCategories();
 	}
 
 	render() {
-		const { clues, categories } = this.props;
+		const { actions, clues, categories } = this.props;
 		// TODO: not sure if there is a more idiomatic way of doing this, but if not, we should
 		// consider adding support for conditionally rendering components
 
@@ -23,6 +25,7 @@ class App extends Component {
 			<div>
 				{categories && <Categories categories={categories} />}
 				{clues && <Clues clues={clues} />}
+				<Board actions={actions} />
 			</div>
 		)
 	}
@@ -49,4 +52,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

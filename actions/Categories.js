@@ -5,6 +5,7 @@ import { requestData, receiveData } from './index';
 import { RECEIVE_CLUES } from './Clues';
 
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
+export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
 
 export function randomCategories(count = 5) {
 	const offset = Math.random()*1000;
@@ -37,5 +38,12 @@ function receiveCategories(json) {
 		meta: {
 			receivedAt: Date.now()
 		}
+	};
+}
+
+function updateCategory(categoryId, json) {
+	console.log("ACTION: updateCategory", categoryId, json);
+	return dispatch => {
+		dispatch({type: UPDATE_CATEGORY, payload: {categoryId: categoryId, json: json}});
 	};
 }

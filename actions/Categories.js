@@ -6,7 +6,7 @@ import { RECEIVE_CLUES } from './Clues';
 
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 
-export function randomCategories(count = 5) {
+export function randomCategories(count = 6) {
 	const offset = Math.random()*1000;
 	return dispatch => {
 		dispatch(requestData());

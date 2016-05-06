@@ -20,9 +20,9 @@ class App extends Component {
 		// consider adding support for conditionally rendering components
 
 		return (
-			<div>
-				{categories && <Categories categories={categories} />}
-				{clues && <Clues clues={clues} />}
+			<div className='board'>
+				<Categories />
+				<Clues />
 			</div>
 		)
 	}

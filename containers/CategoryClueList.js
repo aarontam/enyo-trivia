@@ -1,13 +1,14 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'; // may not need this
+
+import ClueList from './ClueList';
 
 class CategoryClueList extends Component {
 	render() {
-		console.log("RENDER CATEGORYCLUELIST", this);
 		return (
 			<div className="category-clue-list">
-				<div className="category-name">Category Name</div>
-				<div className="clue-list">clue boxes go here</div>
+				<div className="category-title">{this.props.title}</div>
+				<ClueList clues={this.props.clues}/>
 			</div>
 		);
 	}

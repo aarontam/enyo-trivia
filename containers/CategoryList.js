@@ -5,12 +5,11 @@ import CategoryClueList from './CategoryClueList';
 
 class CategoryList extends Component {
 	render() {
-		console.log("RENDER CATEGORY LIST", this);
 		let { categories } = this.props;
 		return (
 			<div className="category-list">
 				{categories.map((category, i) =>
-					<CategoryClueList key={i} />
+					<CategoryClueList key={i} title={category.title} clues={category.clues} />
 				)}
 			</div>
 		);

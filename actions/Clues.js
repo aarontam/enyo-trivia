@@ -16,27 +16,7 @@ export function randomClue() {
 
 export function receiveClues(json) {
 	return dispatch => {
-		dispatch(receiveData({receivedAt: Date.now()}));
-		return {
-			type: RECEIVE_CLUES,
-			// use FSA (Flux Standard Action) definition?
-			payload: {
-				clues: json
-			}
-		};
+		dispatch({type: RECEIVE_CLUES, payload: {clues: json}});
+        dispatch(receiveData({receivedAt: Date.now()}));
 	};
 }
-
-export function receiveCluesFoo(json) {
-	return {
-		type: RECEIVE_CLUES,
-		// use FSA (Flux Standard Action) definition?
-		payload: {
-			clues: json
-		},
-		meta: {
-			receivedAt: Date.now()
-		}
-	};
-}
-

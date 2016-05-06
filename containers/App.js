@@ -12,20 +12,19 @@ class App extends Component {
 
 	componentDidMount() {
 		const { actions } = this.props;
-		// actions.randomClue();
-		// actions.randomCategories();
+		actions.randomCategories(6);
 	}
 
 	render() {
 		const { actions, clues, categories } = this.props;
 		// TODO: not sure if there is a more idiomatic way of doing this, but if not, we should
 		// consider adding support for conditionally rendering components
-
+		console.log("RENDER APP", this);
 		return (
 			<div>
 				{categories && <Categories categories={categories} />}
 				{clues && <Clues clues={clues} />}
-				<Board actions={actions} />
+				<Board />
 			</div>
 		)
 	}

@@ -3,9 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as actionCreators from '../actions/index';
-import Categories from '../components/Categories';
-
-import Board from './Board'
+import Board from '../components/Board';
 
 class App extends Component {
 
@@ -15,27 +13,23 @@ class App extends Component {
 	}
 
 	render() {
-		const { actions, clues, categories } = this.props;
-		// TODO: not sure if there is a more idiomatic way of doing this, but if not, we should
-		// consider adding support for conditionally rendering components
 		console.log("RENDER APP", this);
+		// TODO: App should consist of other things like score display and answer input
 		return (
-			<div className='board'>
-				<Categories />
+			<div className="app">
+				<Board categories={this.props.categories} />
 			</div>
 		)
 	}
 }
 
 App.propTypes = {
-	clues: PropTypes.array,
 	categories: PropTypes.array,
 	dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
 	return {
-		clues: state.clues,
 		categories: state.categories,
 		data: state.data
 	};

@@ -18,7 +18,7 @@ const ClueList = ({clues}) =>
 const Board = ({ categories }) =>
 	<div className="board">
 		{categories && categories.map((category) =>
-			<CategoryClueList category={category} />
+			<CategoryClueList key={category.id} category={category} />
 		)}
 	</div>
 

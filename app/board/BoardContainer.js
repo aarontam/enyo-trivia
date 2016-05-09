@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actionCreators from '../../actions';
+import * as actionCreators from '../actions';
 import Board from './Board';
 
 class BoardContainer extends Component {

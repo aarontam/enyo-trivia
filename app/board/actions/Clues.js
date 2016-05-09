@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
-import { apiBaseUrl } from './Data';
-import { requestData, receiveData } from './index';
+import { apiBaseUrl } from './../../actions/Data';
+import { requestData, receiveData } from './../../actions/index';
 
 export const RECEIVE_CLUES = 'RECEIVE_CLUES';
 export const UPDATE_CLUES = 'UPDATE_CLUES';

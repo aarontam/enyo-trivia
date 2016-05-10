@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from './actions';
 
 import BoardContainer from './board/BoardContainer';
+import ClueDisplayContainer from './clueDisplay/ClueDisplayContainer';
 
 
 
@@ -17,29 +18,25 @@ class App extends Component {
 	}
 
 	render() {
-		const { actions, clues, categories } = this.props;
-		// TODO: not sure if there is a more idiomatic way of doing this, but if not, we should
-		// consider adding support for conditionally rendering components
+		const { game } = this.props;
 		console.log("RENDER APP", this);
 		return (
 			<div className="app">
 				<BoardContainer />
+				<ClueDisplayContainer clue={game.currentClue} />
 			</div>
 		)
 	}
 }
 
 App.propTypes = {
-	clues: PropTypes.array,
-	categories: PropTypes.array,
-	dispatch: PropTypes.func.isRequired
+	dispatch: PropTypes.func.isRequired,
+	game: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
 	return {
-		clues: state.clues,
-		categories: state.categories,
-		data: state.data
+		game: state.game
 	};
 }
 

@@ -6,7 +6,11 @@ function initialState() {
 			lastUpdate: null
 		},
 		categories: [],
-		clues: []
+		clues: [],
+		game: {
+			round: 0,
+			currentClue: {}
+		}
 	};
 	return state;
 }

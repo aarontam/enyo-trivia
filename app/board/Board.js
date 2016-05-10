@@ -1,6 +1,8 @@
 import React from 'react';
 import ClueBoxContainer from './clueBox/ClueBoxContainer';
 
+import './style/Board.css';
+
 const CategoryClueList = ({category}) =>
 	<div className="category-clue-list">
 		<div className="category-title">{category.title}</div>

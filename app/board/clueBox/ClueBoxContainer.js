@@ -1,26 +1,26 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { updateCategoryClue } from '../../actions';
+import { revealClue } from '../../actions';
 import ClueBox from './ClueBox';
 
 export default class ClueBoxContainer extends Component {
 	handleClick(clue) {
 		const { dispatch } = this.props;
-		dispatch(updateCategoryClue(clue, { opened: true }));
+		dispatch(revealClue(clue));
 	}
 
 	render() {
 		let { clue } = this.props;
 		return (
-			<button onClick={this.handleClick.bind(this, clue)}>
+			<div onClick={this.handleClick.bind(this, clue)}>
 				<ClueBox key={clue.id} clue={clue} />
-			</button>
+			</div>
 		);
 	}
 }
 
 ClueBoxContainer.propTypes = {
-	clue: PropTypes.object
+	clue: PropTypes.object.isRequired
 };
 
 export default connect()(ClueBoxContainer);

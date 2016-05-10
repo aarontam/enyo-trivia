@@ -8,7 +8,6 @@ import Board from './Board';
 class BoardContainer extends Component {
 
 	render() {
-		// TODO: App should consist of other things like score display and answer input
 		return (
 			<div className="board-container">
 				<Board categories={this.props.categories} />

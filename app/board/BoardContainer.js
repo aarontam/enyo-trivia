@@ -2,28 +2,22 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actionCreators from '../actions/index';
-import Board from '../components/Board';
+import * as actionCreators from '../actions';
+import Board from './Board';
 
-class App extends Component {
-
-	componentDidMount() {
-		const { actions } = this.props;
-		actions.randomCategories(6);
-	}
+class BoardContainer extends Component {
 
 	render() {
-		console.log("RENDER APP", this);
 		// TODO: App should consist of other things like score display and answer input
 		return (
-			<div className="app">
+			<div className="board-container">
 				<Board categories={this.props.categories} />
 			</div>
 		)
 	}
 }
 
-App.propTypes = {
+BoardContainer.propTypes = {
 	categories: PropTypes.array,
 	dispatch: PropTypes.func.isRequired
 };
@@ -42,4 +36,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(BoardContainer);

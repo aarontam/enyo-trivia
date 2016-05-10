@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import clues from './Clues';
-import categories from './Categories';
+import clues from '../board/reducers/Clues';
+import categories from '../board/reducers/Categories';
 import data from './Data';
 
 const rootReducer = combineReducers({

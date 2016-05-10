@@ -1,5 +1,5 @@
 import React from 'react';
-import ClueBoxContainer from '../containers/ClueBoxContainer';
+import ClueBoxContainer from './clueBox/ClueBoxContainer';
 
 const CategoryClueList = ({category}) =>
 	<div className="category-clue-list">
@@ -18,7 +18,7 @@ const ClueList = ({clues}) =>
 const Board = ({ categories }) =>
 	<div className="board">
 		{categories && categories.map((category) =>
-			<CategoryClueList category={category} />
+			<CategoryClueList key={category.id} category={category} />
 		)}
 	</div>
 
